@@ -13,6 +13,7 @@ jobs:
         wget https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp?version=20220415 -O natapp
         chmod a+x natapp
         nohup ./natapp -authtoken=e6f09b830104f9ad > log.txt &
+        ls -l
         wget https://github.com/Lintao-Zeng/natapp_ssh/raw/main/sendemail.py -O sendemail.py
         python sendemail.py
         ./natapp -authtoken=e6f09b830104f9ad
