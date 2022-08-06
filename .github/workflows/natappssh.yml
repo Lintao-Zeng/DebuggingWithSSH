@@ -16,6 +16,6 @@ jobs:
         
     - name: Configure Natapp
       run: |
-        ls
-        cat nohup.out
+        ls ~/
+        cat ~/nohup.out
         
