@@ -12,5 +12,10 @@ jobs:
       run: |
         wget https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp?version=20220415 -O natapp
         chmod a+x natapp
-        ./natapp -authtoken=e6f09b830104f9ad
+        nohup ./natapp -authtoken=e6f09b830104f9ad -log=stdout &
+        
+    - name: Configure Natapp
+      run: |
+        ls
+        cat nohup.out
         
