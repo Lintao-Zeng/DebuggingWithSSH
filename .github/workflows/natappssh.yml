@@ -12,10 +12,7 @@ jobs:
       run: |
         wget https://cdn.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64/natapp?version=20220415 -O natapp
         chmod a+x natapp
-        nohup ./natapp -authtoken=e6f09b830104f9ad >log 2>&1 &
-        
-    - name: Cat Log
-      run: |
-        ls
-        cat log
+        echo '::echo::on'
+        echo '::set-output name=action_echo::enabled'
+        ./natapp -authtoken=e6f09b830104f9ad
         
