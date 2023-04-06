@@ -7,13 +7,13 @@ jobs:
      - uses: actions/checkout@v1
    
      - name: Start SSH via Ngrok
-       run: curl -sL https://github.com/Lintao-Zeng/UbuntuDownloader/raw/main/debug-github-actions.sh | bash
+       run: curl -sL https://github.com/Lintao-Zeng/DebuggingWithSSH/raw/main/debug-github-actions.sh | bash
        env:
         NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
         USER_PASS: ${{ secrets.USER_PASS }}
 
      - name: Check end
-       run: curl -sL https://github.com/Lintao-Zeng/UbuntuDownloader/raw/main/check.sh | bash
+       run: curl -sL https://github.com/Lintao-Zeng/DebuggingWithSSH/raw/main/check.sh | bash
        
      - name: Upload file to release
        uses: svenstaro/upload-release-action@v2
@@ -26,5 +26,5 @@ jobs:
          body: "This is my release"
         
      - name: Don't kill instance
-       run: curl -sL https://github.com/Lintao-Zeng/UbuntuDownloader/raw/main/loop.sh | bash
+       run: curl -sL https://github.com/Lintao-Zeng/DebuggingWithSSH/raw/main/loop.sh | bash
        
