@@ -5,30 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v1
-    
-     - name: Configure Aliyunpan
-       run: wget https://github.com/tickstep/aliyunpan/releases/download/v0.1.8/aliyunpan-v0.1.8-linux-amd64.zip
-
-     - name: Unzip Aliyunpan
-       run: unzip aliyunpan-v0.1.8-linux-amd64.zip
-    
-     - name: Print Dir
-       run: pwd
-       
-     - name: Try Build
-       run: ./not-exist-file.sh it bloke build
 
      - name: Start SSH via Ngrok
-       if: ${{ failure() }}
-       run: curl -sL https://github.com/Lintao-Zeng/natapp_ssh/raw/main/debug-github-actions.sh | bash
+       run: curl -sL https://github.com/Lintao-Zeng/UbuntuDownloader/raw/main/debug-github-actions.sh | bash
        env:
-        # After sign up on the https://ngrok.com/
-        # You can find this token here: https://dashboard.ngrok.com/get-started/setup
         NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
-
-        # This password you will use when authorizing via SSH 
         USER_PASS: ${{ secrets.USER_PASS }}
 
-     - name: Don't kill instace
-       if: ${{ failure() }}
-       run: sleep 1h # Prevent to killing instance after failure
+     - name: Don't kill instance
+       run: curl -sL https://github.com/Lintao-Zeng/UbuntuDownloader/raw/main/loop.sh | bash
