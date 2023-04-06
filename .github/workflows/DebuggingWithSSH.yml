@@ -1,16 +1,30 @@
-name: Debugging with SSH
+name: Downloader
 on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v1
-
+   
      - name: Start SSH via Ngrok
-       run: curl -sL https://github.com/Lintao-Zeng/DebuggingWithSSH/raw/main/debug-github-actions.sh | bash
+       run: curl -sL https://github.com/Lintao-Zeng/UbuntuDownloader/raw/main/debug-github-actions.sh | bash
        env:
         NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
         USER_PASS: ${{ secrets.USER_PASS }}
 
+     - name: Check end
+       run: curl -sL https://github.com/Lintao-Zeng/UbuntuDownloader/raw/main/check.sh | bash
+       
+     - name: Upload file to release
+       uses: svenstaro/upload-release-action@v2
+       with:
+         repo_token: ${{ secrets.GITHUB_TOKEN }}
+         file: /home/runner/1.zip
+         asset_name: 1.zip
+         tag: ${{ github.ref }}
+         overwrite: true
+         body: "This is my release"
+        
      - name: Don't kill instance
-       run: curl -sL https://github.com/Lintao-Zeng/DebuggingWithSSH/raw/main/loop.sh | bash
+       run: curl -sL https://github.com/Lintao-Zeng/UbuntuDownloader/raw/main/loop.sh | bash
+       
